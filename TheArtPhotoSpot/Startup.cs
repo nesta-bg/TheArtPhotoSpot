@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace TheArtPhotoSpot
 {
@@ -16,7 +19,20 @@ namespace TheArtPhotoSpot
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDefaultFiles();
+
+            // For wwwroot directory
             app.UseStaticFiles();
+
+            // Add support for node_modules but only during development **temporary**
+            if (env.IsDevelopment())
+            {
+                app.UseStaticFiles(new StaticFileOptions()
+                {
+                    FileProvider = new PhysicalFileProvider(
+                      Path.Combine(Directory.GetCurrentDirectory(), @"node_modules")),
+                    RequestPath = new PathString("/vendor")
+                });
+            }
         }
     }
 }
