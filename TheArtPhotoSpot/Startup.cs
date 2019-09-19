@@ -23,6 +23,10 @@ namespace TheArtPhotoSpot
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/error");
+            }
 
             // For wwwroot directory
             app.UseStaticFiles();
