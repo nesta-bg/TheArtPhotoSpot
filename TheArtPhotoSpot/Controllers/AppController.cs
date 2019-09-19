@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
+using TheArtPhotoSpot.ViewModels;
 
 namespace TheArtPhotoSpot.Controllers
 {
@@ -13,10 +13,12 @@ namespace TheArtPhotoSpot.Controllers
         [HttpGet("contact")]
         public IActionResult Contact()
         {
-            ViewBag.Title = "Contact Us";
+            return View();
+        }
 
-            throw new InvalidOperationException("Bad things happen");
-
+        [HttpPost("contact")]
+        public IActionResult Contact(ContactViewModel model)
+        {
             return View();
         }
 
