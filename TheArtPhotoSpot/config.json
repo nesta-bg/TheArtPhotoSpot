@@ -1,0 +1,8 @@
+{
+  "Colors": {
+    "Favorite": "blue"
+  },
+  "ConnectionStrings": {
+    "ArtConnectionString": "server=(localdb)\\ProjectsV13;Database=TheArtPhotoSpotDb;Integrated Security=true;MultipleActiveResultSets=true;"
+  }
+} 

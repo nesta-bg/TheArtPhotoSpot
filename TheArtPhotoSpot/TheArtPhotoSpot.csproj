@@ -15,4 +15,9 @@
     </Content>
   </ItemGroup>
 
+  <!--in case that ef is not already built in to the sdk or into our project-->
+  <!--<ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.1.11" />
+  </ItemGroup>-->
+
 </Project>
