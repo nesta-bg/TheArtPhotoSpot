@@ -28,6 +28,8 @@ namespace TheArtPhotoSpot
                 cfg.UseSqlServer(_config.GetConnectionString("ArtConnectionString"));
             });
 
+            services.AddTransient<ArtSeeder>();
+
             services.AddMvc();
         }
 
@@ -63,6 +65,16 @@ namespace TheArtPhotoSpot
                   "{controller}/{action}/{id?}",
                   new { controller = "App", Action = "Index" });
             });
+
+            if (env.IsDevelopment())
+            {
+                // Seed the database
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var seeder = scope.ServiceProvider.GetService<ArtSeeder>();
+                    seeder.Seed();
+                }
+            }
         }
     }
 }

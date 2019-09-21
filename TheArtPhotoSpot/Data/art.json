@@ -1,0 +1,72 @@
+[
+  {
+    "Id": 0,
+    "Category": "Art Print",
+    "Size": "28\" x 29\"",
+    "Price": 38.99,
+    "Title": "Number 18, 1950",
+    "ArtDescription": "Abstract: This art print displays sharp, vivid images with a high degree of color accuracy. A member of the versatile family of art prints, this high-quality reproduction represents the best of both worlds: quality and affordability. Art prints are created using a digital or offset lithography press.",
+    "ArtDating": "1950",
+    "ArtId": "JP-AP-001",
+    "Artist": "Jackson Pollock",
+    "ArtistBirthDate": "1912 -01-28T00:00:00",
+    "ArtistDeathDate": "1956-08-11T00:00:00",
+    "ArtistNationality": "USA"
+  },
+  {
+    "Id": 0,
+    "Category": "Art Print",
+    "Size": "28\" x 20\"",
+    "Price": 47.99,
+    "Title": "Yellow-Red-Blue",
+    "ArtDescription": "Abstract: This giclée print delivers a vivid image with maximum color accuracy and exceptional resolution. The standard for museums and galleries around the world, giclée is a printing process where millions of ink droplets are “sprayed” onto high-quality paper. With the great degree of detail and smooth transitions of color gradients, giclée prints appear much more realistic than other reproduction prints. The high-quality paper (235 gsm) is acid free with a smooth surface.",
+    "ArtDating": "1925",
+    "ArtId": "WK-AP-001",
+    "Artist": "Wassily Kandinsky",
+    "ArtistBirthDate": "1866-12-04T00:00:00",
+    "ArtistDeathDate": "1944-12-13T00:00:00",
+    "ArtistNationality": "SSSR"
+  },
+  {
+    "Id": 0,
+    "Category": "Premium Giclee Print",
+    "Size": "9\" x 12\"",
+    "Price": 47.99,
+    "Title": "Improvisation No.31: Sea Battle",
+    "ArtDescription": "Abstract: This premium giclée print, an upgrade from the standard giclée print, is produced on thick (310 gsm), textured watercolor paper with the same vivid colors, accuracy, and exceptional resolution giclée prints are known for. The standard for museums and galleries around the world, giclée is a printing process where millions of ink droplets are “sprayed” onto a high-quality paper. The smooth transitions of color gradients make giclée prints appear much more realistic than other prints. ",
+    "ArtDating": "1913",
+    "ArtId": "WK-PGP-002",
+    "Artist": "Wassily Kandinsky",
+    "ArtistBirthDate": "1866-12-04T00:00:00",
+    "ArtistDeathDate": "1944-12-13T00:00:00",
+    "ArtistNationality": "SSSR"
+  },
+  {
+    "Id": 0,
+    "Category": "Art Print",
+    "Size": "14\" x 11\"",
+    "Price": 14.99,
+    "Title": "Composition no.8",
+    "ArtDescription": "Abstract: This art print displays sharp, vivid images with a high degree of color accuracy. A member of the versatile family of art prints, this high-quality reproduction represents the best of both worlds: quality and affordability. Art prints are created using a digital or offset lithography press. ",
+    "ArtDating": "1923",
+    "ArtId": "WK-AP-003",
+    "Artist": "Wassily Kandinsky",
+    "ArtistBirthDate": "1866-12-04T00:00:00",
+    "ArtistDeathDate": "1944-12-13T00:00:00",
+    "ArtistNationality": "SSSR"
+  },
+  {
+    "Id": 0,
+    "Category": "Collectable Print",
+    "Size": "44\" x 36\"",
+    "Price": 142.99,
+    "Title": "White Zig Zag",
+    "ArtDescription": "Abstract: Collectable prints are rare and unique works of art - from original pre-war advertisement posters, to contemporary exhibitions prints, to out-of-print and hard to find gems. Although not signed or numbered like a limited edition, they often appreciate in value over time due to their rarity and age. Because of the unique history of each item, collectable prints may show minor signs of handling, aging, or original print defects. Unless otherwise noted, each print is guaranteed to be in very good condition or better. ",
+    "ArtDating": "1922",
+    "ArtId": "WK-CP-004",
+    "Artist": "Wassily Kandinsky",
+    "ArtistBirthDate": "1866-12-04T00:00:00",
+    "ArtistDeathDate": "1944-12-13T00:00:00",
+    "ArtistNationality": "SSSR"
+  }
+]
