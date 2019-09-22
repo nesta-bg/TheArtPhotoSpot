@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using TheArtPhotoSpot.Data;
+using TheArtPhotoSpot.Services;
 
 namespace TheArtPhotoSpot
 {
@@ -29,6 +30,9 @@ namespace TheArtPhotoSpot
             });
 
             services.AddTransient<ArtSeeder>();
+
+            services.AddTransient<IMailService, NullMailService>();
+            // Support for real mail service
 
             services.AddMvc();
         }

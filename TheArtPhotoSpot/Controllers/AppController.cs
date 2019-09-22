@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using TheArtPhotoSpot.Data;
+using TheArtPhotoSpot.Services;
 using TheArtPhotoSpot.ViewModels;
 
 namespace TheArtPhotoSpot.Controllers
@@ -8,10 +9,12 @@ namespace TheArtPhotoSpot.Controllers
     public class AppController : Controller
     {
         private readonly ArtContext _context;
+        private readonly IMailService _mailService;
 
-        public AppController(ArtContext context)
+        public AppController(ArtContext context, IMailService mailService)
         {
             _context = context;
+            _mailService = mailService;
         }
 
         public IActionResult Index()
@@ -30,11 +33,11 @@ namespace TheArtPhotoSpot.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Chect ASP.NET Core Web Server in Output Window
                 //Send the email
-            }
-            else
-            {
-                //Show the errors
+                _mailService.SendMessage("nenads368@gmail.com", model.Subject, $"From: {model.Name} - {model.Email}, Message: {model.Message}");
+                ViewBag.UserMessage = "Mail Sent";
+                ModelState.Clear();
             }
 
             return View();
