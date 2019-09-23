@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using TheArtPhotoSpot.Data;
 using TheArtPhotoSpot.Services;
 using TheArtPhotoSpot.ViewModels;
@@ -8,12 +7,12 @@ namespace TheArtPhotoSpot.Controllers
 {
     public class AppController : Controller
     {
-        private readonly ArtContext _context;
+        private readonly IArtRepository _repository;
         private readonly IMailService _mailService;
 
-        public AppController(ArtContext context, IMailService mailService)
+        public AppController(IArtRepository repository, IMailService mailService)
         {
-            _context = context;
+            _repository = repository;
             _mailService = mailService;
         }
 
@@ -52,17 +51,7 @@ namespace TheArtPhotoSpot.Controllers
 
         public IActionResult Shop()
         {
-            //LINQ Query
-            //var results = from p in _context.Products
-            //              orderby p.Category
-            //              select p;
-
-            //return View(results.ToList());
-
-
-            var results = _context.Products
-                .OrderBy(p => p.Category)
-                .ToList();
+            var results = _repository.GetAllProducts();
 
             return View(results);
         }

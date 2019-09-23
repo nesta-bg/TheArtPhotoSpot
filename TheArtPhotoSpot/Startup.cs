@@ -34,6 +34,8 @@ namespace TheArtPhotoSpot
             services.AddTransient<IMailService, NullMailService>();
             // Support for real mail service
 
+            services.AddScoped<IArtRepository, ArtRepository>();
+
             services.AddMvc();
         }
 
