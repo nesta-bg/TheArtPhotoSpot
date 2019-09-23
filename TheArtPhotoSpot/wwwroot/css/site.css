@@ -83,3 +83,7 @@ menu li {
     menu li:last-of-type::after {
         content: "";
     }*/
+
+.body-content {
+    padding-top: 20px;
+}

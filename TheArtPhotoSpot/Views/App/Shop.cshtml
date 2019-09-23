@@ -1,9 +1,38 @@
 ﻿@model IEnumerable<Product>
 
-<h1>Shop</h1>
-<p>Count: @Model.Count()</p>
+@{
+    ViewBag.Title = "Shop";
+}
 
-@foreach (var p in Model)
-{
-    <li>@p.Title</li>
-} 
+<p>Products: @Model.Count()</p>
+
+<div class="row">
+    @foreach (var p in Model)
+    {
+        <div class="col-lg-4 col-xl-2">
+            <div class="card bg-light" style="width: 18rem;">
+                <img src="~/img/@(p.ArtId).jpg" class="card-img-top" alt="@p.Title">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Category - @p.Size</h5>
+                    <p class="card-text">
+                        <ul class="product-props">
+                            <li>Price: @p.Price</li>
+                            <li>Artist: @p.Artist</li>
+                            <li>Title: @p.Title</li>
+                            @*<li>Description: @p.ArtDescription</li>*@
+                            <li>
+                                Description:
+                                <a class="btn btn-outline-info btn-sm" data-toggle="collapse"
+                                   href="#@p.ArtId" role="button" aria-expanded="false" aria-controls="@p.ArtId">Show</a>
+                            </li>
+                        </ul>
+                        <div class="collapse" id="@p.ArtId">
+                            @p.ArtDescription
+                        </div>
+                    </p>
+                    <button id="buyButton">Buy</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
