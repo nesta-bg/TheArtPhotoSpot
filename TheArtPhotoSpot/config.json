@@ -4,5 +4,20 @@
   },
   "ConnectionStrings": {
     "ArtConnectionString": "server=(localdb)\\ProjectsV13;Database=TheArtPhotoSpotDb;Integrated Security=true;MultipleActiveResultSets=true;"
+  },
+
+  //To see Log Messages in Command Prompt:
+  //set ASPNETCORE_ENVIRONMENT=Development
+  //dotnet run = run the app
+  //CTRL+C = shut down the app
+  //When navigate from page to page because app is run:
+  //Using launch settings from //C:\Users\Nenad\source\repos\ArtPhotoSpot\ArtPhotoSpot\Propert//ies\launchSettings.json...
+  //Now listening on: http://localhost:5000
+
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning"
+    }
   }
-} 
+}
