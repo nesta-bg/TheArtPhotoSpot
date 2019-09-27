@@ -84,7 +84,7 @@ namespace TheArtPhotoSpot
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var seeder = scope.ServiceProvider.GetService<ArtSeeder>();
-                    seeder.Seed();
+                    seeder.Seed().Wait();
                 }
             }
         }

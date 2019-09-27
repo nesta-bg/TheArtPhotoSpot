@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using TheArtPhotoSpot.Data.Entites;
+using TheArtPhotoSpot.Data.Entities;
 
 namespace TheArtPhotoSpot.Data
 {
@@ -12,16 +15,40 @@ namespace TheArtPhotoSpot.Data
     {
         private readonly ArtContext _context;
         private readonly IHostingEnvironment _hosting;
+        private readonly UserManager<StoreUser> _userManager;
 
-        public ArtSeeder(ArtContext context, IHostingEnvironment hosting)
+        public ArtSeeder(
+            ArtContext context,
+            IHostingEnvironment hosting,
+            UserManager<StoreUser> userManager)
         {
             _context = context;
             _hosting = hosting;
+            _userManager = userManager;
         }
 
-        public void Seed()
+        public async Task Seed()
         {
             _context.Database.EnsureCreated();
+
+            var user = await _userManager.FindByEmailAsync("nenad@theartphotospot.com");
+
+            if (user == null)
+            {
+                user = new StoreUser()
+                {
+                    FirstName = "Nenad",
+                    LastName = "Stojkovic",
+                    UserName = "nenad@theartphotospot.com",
+                    Email = "nenad@theartphotospot.com"
+                };
+
+                var result = await _userManager.CreateAsync(user, "P@ssw0rd!");
+                if (result != IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("Failed to create default user");
+                }
+            }
 
             if (!_context.Products.Any())
             {
@@ -36,6 +63,7 @@ namespace TheArtPhotoSpot.Data
                 {
                     OrderDate = DateTime.Now,
                     OrderNumber = "12345",
+                    User = user,
                     Items = new List<OrderItem>()
                     {
                         new OrderItem()
