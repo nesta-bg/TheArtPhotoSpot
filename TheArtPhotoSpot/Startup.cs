@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using TheArtPhotoSpot.Data;
+using TheArtPhotoSpot.Data.Entities;
 using TheArtPhotoSpot.Services;
 
 namespace TheArtPhotoSpot
@@ -27,6 +29,13 @@ namespace TheArtPhotoSpot
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<StoreUser, IdentityRole>(cfg =>
+            {
+                cfg.User.RequireUniqueEmail = true;
+                //cfg.Password.RequiredLength = 6;
+            })
+                .AddEntityFrameworkStores<ArtContext>();
+
             services.AddDbContext<ArtContext>(cfg =>
             {
                 cfg.UseSqlServer(_config.GetConnectionString("ArtConnectionString"));
@@ -70,6 +79,9 @@ namespace TheArtPhotoSpot
                     RequestPath = new PathString("/vendor")
                 });
             }
+
+            //must be before app.UseMvc
+            app.UseAuthentication();
 
             app.UseMvc(cfg =>
             {
