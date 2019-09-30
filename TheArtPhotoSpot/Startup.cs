@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Text;
 using TheArtPhotoSpot.Data;
 using TheArtPhotoSpot.Data.Entities;
 using TheArtPhotoSpot.Services;
@@ -38,6 +40,19 @@ namespace TheArtPhotoSpot
                 //cfg.Password.RequiredLength = 6;
             })
                 .AddEntityFrameworkStores<ArtContext>();
+
+            services.AddAuthentication()
+              .AddCookie()
+              .AddJwtBearer(cfg =>
+              {
+                  cfg.TokenValidationParameters = new TokenValidationParameters()
+                  {
+                      ValidIssuer = _config["Tokens:Issuer"],
+                      ValidAudience = _config["Tokens:Audience"],
+                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]))
+                  };
+
+              });
 
             services.AddDbContext<ArtContext>(cfg =>
             {
