@@ -3,28 +3,28 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "art-app": {
+    "ClientApp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "ClientApp",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/art-app",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "outputPath": "./wwwroot/ClientApp/dist",
+            "index": "ClientApp/index.html",
+            "main": "ClientApp/main.ts",
+            "polyfills": "ClientApp/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "ClientApp/favicon.ico",
+              "ClientApp/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "ClientApp/styles.css"
             ],
             "scripts": []
           },
@@ -32,8 +32,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "ClientApp/environments/environment.ts",
+                  "with": "ClientApp/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -63,21 +63,22 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "art-app:build"
+            "browserTarget": "ClientApp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "art-app:build:production"
+              "browserTarget": "ClientApp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "art-app:build"
+            "browserTarget": "ClientApp:build"
           }
         }
       }
-    }},
-  "defaultProject": "art-app"
+    }
+  },
+  "defaultProject": "ClientApp"
 }
