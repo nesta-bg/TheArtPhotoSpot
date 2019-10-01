@@ -44,7 +44,7 @@ let AppComponent = class AppComponent {
 };
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-root',
+        selector: 'the-shop',
         template: `
       <h1>
         Welcome to {{title}}!

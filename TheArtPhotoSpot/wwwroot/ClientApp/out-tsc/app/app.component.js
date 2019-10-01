@@ -7,7 +7,7 @@ let AppComponent = class AppComponent {
 };
 AppComponent = tslib_1.__decorate([
     Component({
-        selector: 'app-root',
+        selector: 'the-shop',
         template: `
       <h1>
         Welcome to {{title}}!
