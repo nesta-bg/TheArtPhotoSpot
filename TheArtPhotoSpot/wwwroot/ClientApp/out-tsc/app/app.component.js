@@ -8,11 +8,7 @@ let AppComponent = class AppComponent {
 AppComponent = tslib_1.__decorate([
     Component({
         selector: 'the-shop',
-        template: `
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-  `,
+        templateUrl: "./app.component.html",
         styles: []
     })
 ], AppComponent);
