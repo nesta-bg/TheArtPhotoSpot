@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ProductList } from './shop/productList.component';
+import { DataService } from './shared/dataService';
 let AppModule = class AppModule {
 };
 AppModule = tslib_1.__decorate([
@@ -14,7 +15,7 @@ AppModule = tslib_1.__decorate([
         imports: [
             BrowserModule
         ],
-        providers: [],
+        providers: [DataService],
         bootstrap: [AppComponent]
     })
 ], AppModule);
