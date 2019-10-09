@@ -3,13 +3,12 @@ import { Component } from "@angular/core";
 let ProductList = class ProductList {
     constructor(data) {
         this.data = data;
-        this.products = [];
     }
     ngOnInit() {
-        this.data.loadProducts()
-            .subscribe(success => {
-            if (success) {
-                this.products = this.data.products;
+        return this.data.loadProducts()
+            .subscribe(data => {
+            if (data) {
+                this.products = data;
             }
         });
     }
