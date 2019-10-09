@@ -69,6 +69,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./ClientApp/app/app.component.ts");
 /* harmony import */ var _shop_productList_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shop/productList.component */ "./ClientApp/app/shop/productList.component.ts");
 /* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shared/dataService */ "./ClientApp/app/shared/dataService.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
 
 
 
@@ -84,7 +86,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _shop_productList_component__WEBPACK_IMPORTED_MODULE_4__["ProductList"]
         ],
         imports: [
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"]
         ],
         providers: [_shared_dataService__WEBPACK_IMPORTED_MODULE_5__["DataService"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
@@ -106,25 +109,35 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
 
-class DataService {
-    constructor() {
-        this.products = [
-            {
-                title: "First Product",
-                price: 19.99
-            },
-            {
-                title: "Second Product",
-                price: 11.99
-            },
-            {
-                title: "Third Product",
-                price: 14.99
-            }
-        ];
+
+
+
+let DataService = class DataService {
+    constructor(httpClient) {
+        this.httpClient = httpClient;
+        this.products = [];
     }
-}
+    loadProducts() {
+        return this.httpClient.get("/api/products")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((data) => {
+            this.products = data;
+            return true;
+        }));
+    }
+};
+DataService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], DataService);
+
 
 
 /***/ }),
@@ -149,7 +162,14 @@ let ProductList = class ProductList {
     constructor(data) {
         this.data = data;
         this.products = [];
-        this.products = data.products;
+    }
+    ngOnInit() {
+        this.data.loadProducts()
+            .subscribe(success => {
+            if (success) {
+                this.products = this.data.products;
+            }
+        });
     }
 };
 ProductList.ctorParameters = () => [
@@ -246,7 +266,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\r\n    <ul>\r\n        <li *ngFor=\"let p of products\">{{ p.title }}: {{ p.price | currency:\"GBP\" }}</li>\r\n    </ul>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\r\n    <ul>\r\n        <li *ngFor=\"let p of products\">{{ p.title }}: {{ p.price | currency:\"USD\":true }}</li>\r\n    </ul>\r\n</div>");
 
 /***/ }),
 

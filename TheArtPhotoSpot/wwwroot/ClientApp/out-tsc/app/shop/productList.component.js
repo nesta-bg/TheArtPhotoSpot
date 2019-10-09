@@ -4,7 +4,14 @@ let ProductList = class ProductList {
     constructor(data) {
         this.data = data;
         this.products = [];
-        this.products = data.products;
+    }
+    ngOnInit() {
+        this.data.loadProducts()
+            .subscribe(success => {
+            if (success) {
+                this.products = this.data.products;
+            }
+        });
     }
 };
 ProductList = tslib_1.__decorate([

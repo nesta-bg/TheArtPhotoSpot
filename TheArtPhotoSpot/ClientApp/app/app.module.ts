@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ProductList } from './shop/productList.component';
 import { DataService } from './shared/dataService';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -11,7 +12,8 @@ import { DataService } from './shared/dataService';
         ProductList
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        HttpClientModule
     ],
     providers: [DataService],
     bootstrap: [AppComponent]
