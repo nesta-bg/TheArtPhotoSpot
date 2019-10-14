@@ -68,5 +68,20 @@
     "ArtistBirthDate": "1866-12-04T00:00:00",
     "ArtistDeathDate": "1944-12-13T00:00:00",
     "ArtistNationality": "SSSR"
+  },
+  {
+    "Id": 0,
+    "Category": "Giclee Print",
+    "Size": "25\" x 20\"",
+    "Price": 67.99,
+    "Title": "New York Movie",
+    "ArtDescription": "Realistic: This giclée print delivers a vivid image with maximum color accuracy and exceptional resolution. The standard for museums and galleries around the world, giclée is a printing process where millions of ink droplets are “sprayed” onto high-quality paper. With the great degree of detail and smooth transitions of color gradients, giclée prints appear much more realistic than other reproduction prints. The high-quality paper (235 gsm) is acid free with a smooth surface.  ",
+    "ArtDating": "1939",
+    "ArtId": "EH-GP-001",
+    "Artist": "Edward Hopper",
+    "ArtistBirthDate": "1882-07-22T00:00:00",
+    "ArtistDeathDate": "1967-05-15T00:00:00",
+    "ArtistNationality": "USA"
   }
+
 ]

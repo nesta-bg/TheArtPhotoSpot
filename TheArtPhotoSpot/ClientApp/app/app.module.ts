@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { ProductList } from './shop/productList.component';
 import { DataService } from './shared/dataService';
 import { HttpClientModule } from '@angular/common/http';
+import { ZippyComponent } from './shared/zippy.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        ProductList
+        ProductList,
+        ZippyComponent
     ],
     imports: [
         BrowserModule,

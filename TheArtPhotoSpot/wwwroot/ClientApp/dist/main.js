@@ -70,6 +70,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shop_productList_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shop/productList.component */ "./ClientApp/app/shop/productList.component.ts");
 /* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shared/dataService */ "./ClientApp/app/shared/dataService.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _shared_zippy_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/zippy.component */ "./ClientApp/app/shared/zippy.component.ts");
+
 
 
 
@@ -83,7 +85,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-            _shop_productList_component__WEBPACK_IMPORTED_MODULE_4__["ProductList"]
+            _shop_productList_component__WEBPACK_IMPORTED_MODULE_4__["ProductList"],
+            _shared_zippy_component__WEBPACK_IMPORTED_MODULE_7__["ZippyComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -137,6 +140,76 @@ DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./ClientApp/app/shared/zippy.component.ts":
+/*!*************************************************!*\
+  !*** ./ClientApp/app/shared/zippy.component.ts ***!
+  \*************************************************/
+/*! exports provided: ZippyComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZippyComponent", function() { return ZippyComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let ZippyComponent = class ZippyComponent {
+    constructor() {
+        this.isExpanded = false;
+    }
+    toggle() {
+        this.isExpanded = !this.isExpanded;
+        this.isExpanded ? this.title = "Hide" : this.title = "Show";
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], ZippyComponent.prototype, "title", void 0);
+ZippyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'zippy',
+        template: `
+        <div class="zippy">
+            <div 
+            class="zippy-title"
+            (click)="toggle()">
+            {{ title }} 
+            <i 
+                class="float-right fa"
+                [ngClass]="
+                    { 
+                        'fa-chevron-down': !isExpanded, 
+                        'fa-chevron-up': isExpanded 
+                    }">
+            </i>
+            </div>
+            <div *ngIf="isExpanded" class="zippy-content">
+                <ng-content></ng-content> 
+            </div>
+        </div> 
+    `,
+        styles: ["\n        //.zippy {\n        //    border: 1px solid #ccc;\n        //    border-radius: 2px;\n        //}\n  \n        //.zippy .zippy-title {\n        //    padding: 20px;\n        //    font-weight: bold;\n        //}\n  \n        .zippy .zippy-title:hover{\n            background: #f0f0f0;\n            cursor: pointer;\n        }\n  \n        //.zippy .zippy-content {\n        //    padding: 20px;\n        //}\n    "]
+    })
+], ZippyComponent);
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/shop/productList.component.css":
+/*!******************************************************!*\
+  !*** ./ClientApp/app/shop/productList.component.css ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".product-info img {\r\n    /*max-width: 100px;*/\r\n    /*float: left;\r\n    margin: 0 5px;\r\n    border: solid 1px black;*/\r\n}\r\n\r\n.product-info {\r\n    margin: 5px;\r\n}\r\n\r\n.product-info img {\r\n        /*max-width: 100px;*/\r\n        /*float: left;\r\n    margin: 0 5px;\r\n    border: solid 1px black;*/\r\n\r\n        max-width: 300px;\r\n    }\r\n\r\n.product-info .product-name {\r\n    font-size: large;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNsaWVudEFwcC9hcHAvc2hvcC9wcm9kdWN0TGlzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksb0JBQW9CO0lBQ3BCOzs2QkFFeUI7QUFDN0I7O0FBRUE7SUFDSSxXQUFXO0FBQ2Y7O0FBRUk7UUFDSSxvQkFBb0I7UUFDcEI7OzZCQUVxQjs7UUFFckIsZ0JBQWdCO0lBQ3BCOztBQUlKO0lBQ0ksZ0JBQWdCO0lBQ2hCLGlCQUFpQjtBQUNyQiIsImZpbGUiOiJDbGllbnRBcHAvYXBwL3Nob3AvcHJvZHVjdExpc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wcm9kdWN0LWluZm8gaW1nIHtcclxuICAgIC8qbWF4LXdpZHRoOiAxMDBweDsqL1xyXG4gICAgLypmbG9hdDogbGVmdDtcclxuICAgIG1hcmdpbjogMCA1cHg7XHJcbiAgICBib3JkZXI6IHNvbGlkIDFweCBibGFjazsqL1xyXG59XHJcblxyXG4ucHJvZHVjdC1pbmZvIHtcclxuICAgIG1hcmdpbjogNXB4O1xyXG59XHJcblxyXG4gICAgLnByb2R1Y3QtaW5mbyBpbWcge1xyXG4gICAgICAgIC8qbWF4LXdpZHRoOiAxMDBweDsqL1xyXG4gICAgICAgIC8qZmxvYXQ6IGxlZnQ7XHJcbiAgICBtYXJnaW46IDAgNXB4O1xyXG4gICAgYm9yZGVyOiBzb2xpZCAxcHggYmxhY2s7Ki9cclxuXHJcbiAgICAgICAgbWF4LXdpZHRoOiAzMDBweDtcclxuICAgIH1cclxuXHJcblxyXG5cclxuLnByb2R1Y3QtaW5mbyAucHJvZHVjdC1uYW1lIHtcclxuICAgIGZvbnQtc2l6ZTogbGFyZ2U7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG5cclxuXHJcbiJdfQ== */");
+
+/***/ }),
+
 /***/ "./ClientApp/app/shop/productList.component.ts":
 /*!*****************************************************!*\
   !*** ./ClientApp/app/shop/productList.component.ts ***!
@@ -172,7 +245,8 @@ ProductList.ctorParameters = () => [
 ProductList = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: "product-list",
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./productList.component.html */ "./node_modules/raw-loader/dist/cjs.js!./ClientApp/app/shop/productList.component.html")).default
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./productList.component.html */ "./node_modules/raw-loader/dist/cjs.js!./ClientApp/app/shop/productList.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./productList.component.css */ "./ClientApp/app/shop/productList.component.css")).default]
     })
 ], ProductList);
 
@@ -247,7 +321,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row bg-light\">\r\n    <div class=\"col-9\">\r\n        <h3>{{ title }}</h3>\r\n        <product-list></product-list>\r\n    </div>\r\n    <div class=\"col-3\">\r\n        <h3>Card</h3>\r\n    </div>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\r\n    <div class=\"col-9\">\r\n        <h3>{{ title }}</h3>\r\n        <product-list></product-list>\r\n    </div>\r\n    <div class=\"col-3\">\r\n        <h3>Card</h3>\r\n    </div>\r\n</div>");
 
 /***/ }),
 
@@ -260,7 +334,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\r\n    <ul>\r\n        <li *ngFor=\"let p of products\">{{ p.title }}: {{ p.price | currency:\"USD\":true }}</li>\r\n    </ul>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!--<div class=\"row\">\r\n    <div class=\"product-info col-4\" *ngFor=\"let p of products\">\r\n        <img src=\"/img/{{ p.artId }}.jpg\" class=\"image-responsive\" [alt]=\"p.title\" />\r\n        <div class=\"product-name\">{{ p.category }} - {{ p.size }}</div>\r\n        <div><strong>Price:</strong> {{ p.price | currency:'USD':'symbol' }}</div>\r\n        <div><strong>Artist:</strong> {{ p.artist }}</div>\r\n        <div><strong>Title:</strong> {{ p.title }}</div>\r\n        <div><strong>Description:</strong> {{ p.artDescription }}</div>\r\n\r\n        <button id=\"buyButton\" class=\"btn btn-success btn-sm pull-right\">Buy</button>\r\n    </div>\r\n</div>-->\r\n\r\n\r\n<div class=\"row\">\r\n    <div class=\"card-deck\">\r\n        <div class=\"card product-info\" *ngFor=\"let p of products; let i = index\">\r\n            <img class=\"card-img-top\" src=\"/img/{{ p.artId }}.jpg\" [alt]=\"p.title\">\r\n            <div class=\"card-body\">\r\n                <div class=\"product-name\">{{ p.category }} - {{ p.size }}</div>\r\n                <div><strong>Price:</strong> {{ p.price | currency:'USD':'symbol' }}</div>\r\n                <div><strong>Artist:</strong> {{ p.artist }}</div>\r\n                <div><strong>Title:</strong> {{ p.title }}</div>\r\n                <!--<div><strong>Description:</strong> {{ p.artDescription }}</div>-->\r\n\r\n            <div>\r\n                <strong>Description:</strong>\r\n\r\n                <zippy title=\"Show\">\r\n                    {{ p.artDescription }}\r\n                </zippy>\r\n\r\n\r\n            </div>\r\n\r\n\r\n\r\n                    <button id=\"buyButton\" class=\"btn btn-success btn-sm pull-right\">Buy</button>\r\n                </div>\r\n            </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n   \r\n\r\n\r\n");
 
 /***/ }),
 

@@ -1,5 +1,20 @@
 ﻿<div class="row">
-    <ul>
-        <li *ngFor="let p of products">{{ p.title }}: {{ p.price | currency:"USD":true }}</li>
-    </ul>
+    <div class="card-deck">
+        <div class="card product-info" *ngFor="let p of products; let i = index">
+            <img class="card-img-top" src="/img/{{ p.artId }}.jpg" [alt]="p.title">
+            <div class="card-body">
+                <div class="product-name">{{ p.category }} - {{ p.size }}</div>
+                <div><strong>Price:</strong> {{ p.price | currency:'USD':'symbol' }}</div>
+                <div><strong>Artist:</strong> {{ p.artist }}</div>
+                <div><strong>Title:</strong> {{ p.title }}</div>
+                <div><strong>Description:</strong><zippy title="Show">{{ p.artDescription }}</zippy></div>
+                <button id="buyButton" class="btn btn-success btn-sm pull-right">Buy</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+   
+
+

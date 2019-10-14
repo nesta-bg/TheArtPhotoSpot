@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 let DataService = class DataService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        this.apiUrl = 'http://localhost:54510/api';
+        this.apiUrl = 'http://localhost:63127/api';
         this.products = [];
     }
     loadProducts() {
