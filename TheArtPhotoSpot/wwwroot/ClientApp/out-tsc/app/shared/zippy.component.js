@@ -1,5 +1,5 @@
 import * as tslib_1 from "tslib";
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 let ZippyComponent = class ZippyComponent {
     constructor() {
         this.isExpanded = false;
@@ -9,6 +9,9 @@ let ZippyComponent = class ZippyComponent {
         this.isExpanded ? this.title = "Hide" : this.title = "Show";
     }
 };
+tslib_1.__decorate([
+    Input()
+], ZippyComponent.prototype, "title", void 0);
 ZippyComponent = tslib_1.__decorate([
     Component({
         selector: 'zippy',
