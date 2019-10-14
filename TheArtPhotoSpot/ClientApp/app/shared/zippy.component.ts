@@ -31,7 +31,7 @@
 })
 export class ZippyComponent {
     isExpanded = false;
-    title: string;
+    @Input() title: string;
 
     toggle() {
         this.isExpanded = !this.isExpanded;

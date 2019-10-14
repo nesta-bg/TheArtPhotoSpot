@@ -172,24 +172,24 @@ ZippyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: `
         <div class="zippy">
             <div 
-            class="zippy-title"
-            (click)="toggle()">
-            {{ title }} 
-            <i 
-                class="float-right fa"
-                [ngClass]="
+                class="zippy-title"
+                (click)="toggle()">
+                {{ title }} 
+                <i 
+                    class="fa"
+                    [ngClass]="
                     { 
                         'fa-chevron-down': !isExpanded, 
                         'fa-chevron-up': isExpanded 
                     }">
-            </i>
+                </i>
             </div>
             <div *ngIf="isExpanded" class="zippy-content">
                 <ng-content></ng-content> 
             </div>
         </div> 
     `,
-        styles: ["\n        //.zippy {\n        //    border: 1px solid #ccc;\n        //    border-radius: 2px;\n        //}\n  \n        //.zippy .zippy-title {\n        //    padding: 20px;\n        //    font-weight: bold;\n        //}\n  \n        .zippy .zippy-title:hover{\n            background: #f0f0f0;\n            cursor: pointer;\n        }\n  \n        //.zippy .zippy-content {\n        //    padding: 20px;\n        //}\n    "]
+        styles: ["\n        .zippy .zippy-title:hover{\n            background: #f0f0f0;\n            cursor: pointer;\n        }\n    "]
     })
 ], ZippyComponent);
 
@@ -206,7 +206,7 @@ ZippyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".product-info img {\r\n    /*max-width: 100px;*/\r\n    /*float: left;\r\n    margin: 0 5px;\r\n    border: solid 1px black;*/\r\n}\r\n\r\n.product-info {\r\n    margin: 5px;\r\n}\r\n\r\n.product-info img {\r\n        /*max-width: 100px;*/\r\n        /*float: left;\r\n    margin: 0 5px;\r\n    border: solid 1px black;*/\r\n\r\n        max-width: 300px;\r\n    }\r\n\r\n.product-info .product-name {\r\n    font-size: large;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNsaWVudEFwcC9hcHAvc2hvcC9wcm9kdWN0TGlzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksb0JBQW9CO0lBQ3BCOzs2QkFFeUI7QUFDN0I7O0FBRUE7SUFDSSxXQUFXO0FBQ2Y7O0FBRUk7UUFDSSxvQkFBb0I7UUFDcEI7OzZCQUVxQjs7UUFFckIsZ0JBQWdCO0lBQ3BCOztBQUlKO0lBQ0ksZ0JBQWdCO0lBQ2hCLGlCQUFpQjtBQUNyQiIsImZpbGUiOiJDbGllbnRBcHAvYXBwL3Nob3AvcHJvZHVjdExpc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wcm9kdWN0LWluZm8gaW1nIHtcclxuICAgIC8qbWF4LXdpZHRoOiAxMDBweDsqL1xyXG4gICAgLypmbG9hdDogbGVmdDtcclxuICAgIG1hcmdpbjogMCA1cHg7XHJcbiAgICBib3JkZXI6IHNvbGlkIDFweCBibGFjazsqL1xyXG59XHJcblxyXG4ucHJvZHVjdC1pbmZvIHtcclxuICAgIG1hcmdpbjogNXB4O1xyXG59XHJcblxyXG4gICAgLnByb2R1Y3QtaW5mbyBpbWcge1xyXG4gICAgICAgIC8qbWF4LXdpZHRoOiAxMDBweDsqL1xyXG4gICAgICAgIC8qZmxvYXQ6IGxlZnQ7XHJcbiAgICBtYXJnaW46IDAgNXB4O1xyXG4gICAgYm9yZGVyOiBzb2xpZCAxcHggYmxhY2s7Ki9cclxuXHJcbiAgICAgICAgbWF4LXdpZHRoOiAzMDBweDtcclxuICAgIH1cclxuXHJcblxyXG5cclxuLnByb2R1Y3QtaW5mbyAucHJvZHVjdC1uYW1lIHtcclxuICAgIGZvbnQtc2l6ZTogbGFyZ2U7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG5cclxuXHJcbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".product-info .product-name {\r\n    font-size: large;\r\n    font-weight: bold;\r\n}\r\n\r\n.wrap {\r\n    margin: 5px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNsaWVudEFwcC9hcHAvc2hvcC9wcm9kdWN0TGlzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZ0JBQWdCO0lBQ2hCLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLFdBQVc7QUFDZiIsImZpbGUiOiJDbGllbnRBcHAvYXBwL3Nob3AvcHJvZHVjdExpc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wcm9kdWN0LWluZm8gLnByb2R1Y3QtbmFtZSB7XHJcbiAgICBmb250LXNpemU6IGxhcmdlO1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbi53cmFwIHtcclxuICAgIG1hcmdpbjogNXB4O1xyXG59XHJcbiJdfQ== */");
 
 /***/ }),
 
@@ -334,7 +334,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!--<div class=\"row\">\r\n    <div class=\"product-info col-4\" *ngFor=\"let p of products\">\r\n        <img src=\"/img/{{ p.artId }}.jpg\" class=\"image-responsive\" [alt]=\"p.title\" />\r\n        <div class=\"product-name\">{{ p.category }} - {{ p.size }}</div>\r\n        <div><strong>Price:</strong> {{ p.price | currency:'USD':'symbol' }}</div>\r\n        <div><strong>Artist:</strong> {{ p.artist }}</div>\r\n        <div><strong>Title:</strong> {{ p.title }}</div>\r\n        <div><strong>Description:</strong> {{ p.artDescription }}</div>\r\n\r\n        <button id=\"buyButton\" class=\"btn btn-success btn-sm pull-right\">Buy</button>\r\n    </div>\r\n</div>-->\r\n\r\n\r\n<div class=\"row\">\r\n    <div class=\"card-deck\">\r\n        <div class=\"card product-info\" *ngFor=\"let p of products; let i = index\">\r\n            <img class=\"card-img-top\" src=\"/img/{{ p.artId }}.jpg\" [alt]=\"p.title\">\r\n            <div class=\"card-body\">\r\n                <div class=\"product-name\">{{ p.category }} - {{ p.size }}</div>\r\n                <div><strong>Price:</strong> {{ p.price | currency:'USD':'symbol' }}</div>\r\n                <div><strong>Artist:</strong> {{ p.artist }}</div>\r\n                <div><strong>Title:</strong> {{ p.title }}</div>\r\n                <!--<div><strong>Description:</strong> {{ p.artDescription }}</div>-->\r\n\r\n            <div>\r\n                <strong>Description:</strong>\r\n\r\n                <zippy title=\"Show\">\r\n                    {{ p.artDescription }}\r\n                </zippy>\r\n\r\n\r\n            </div>\r\n\r\n\r\n\r\n                    <button id=\"buyButton\" class=\"btn btn-success btn-sm pull-right\">Buy</button>\r\n                </div>\r\n            </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n   \r\n\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\r\n    <div class=\"card-deck wrap\">\r\n        <div class=\"card product-info\" *ngFor=\"let p of products; let i = index\">\r\n            <img class=\"card-img-top\" src=\"/img/{{ p.artId }}.jpg\" [alt]=\"p.title\">\r\n            <div class=\"card-body\">\r\n                <div class=\"product-name\">{{ p.category }} - {{ p.size }}</div>\r\n                <div><strong>Price:</strong> {{ p.price | currency:'USD':'symbol' }}</div>\r\n                <div><strong>Artist:</strong> {{ p.artist }}</div>\r\n                <div><strong>Title:</strong> {{ p.title }}</div>\r\n                <div><strong>Description:</strong><zippy title=\"Show\">{{ p.artDescription }}</zippy></div>\r\n                <button id=\"buyButton\" class=\"btn btn-success btn-sm pull-right\">Buy</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n   \r\n\r\n\r\n");
 
 /***/ }),
 
