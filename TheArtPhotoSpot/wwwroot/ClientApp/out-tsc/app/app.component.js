@@ -9,7 +9,13 @@ AppComponent = tslib_1.__decorate([
     Component({
         selector: 'the-shop',
         templateUrl: "./app.component.html",
-        styles: []
+        styles: [
+            `
+        .wrap {
+            margin: 20px;
+        }
+        `
+        ]
     })
 ], AppComponent);
 export { AppComponent };

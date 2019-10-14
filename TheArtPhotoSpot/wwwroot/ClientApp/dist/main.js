@@ -118,17 +118,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _order__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./order */ "./ClientApp/app/shared/order.ts");
 
 
+
+//import * as orders from './order';
 
 let DataService = class DataService {
     constructor(httpClient) {
         this.httpClient = httpClient;
         this.apiUrl = 'http://localhost:63127/api';
+        //public order: orders.Order = new orders.Order();
+        this.order = new _order__WEBPACK_IMPORTED_MODULE_3__["Order"]();
         this.products = [];
     }
     loadProducts() {
         return this.httpClient.get(`${this.apiUrl}/products`);
+    }
+    AddToOrder(product) {
+        //let item: orders.OrderItem;
+        let item;
+        item = new _order__WEBPACK_IMPORTED_MODULE_3__["OrderItem"]();
+        item.productId = product.id;
+        item.productArtist = product.artist;
+        item.productCategory = product.category;
+        item.productArtId = product.artId;
+        item.productTitle = product.title;
+        item.productSize = product.size;
+        item.unitPrice = product.price;
+        item.quantity = 1;
+        this.order.items.push(item);
     }
 };
 DataService.ctorParameters = () => [
@@ -140,6 +159,31 @@ DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     })
 ], DataService);
 
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/shared/order.ts":
+/*!***************************************!*\
+  !*** ./ClientApp/app/shared/order.ts ***!
+  \***************************************/
+/*! exports provided: Order, OrderItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Order", function() { return Order; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderItem", function() { return OrderItem; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Order {
+    constructor() {
+        this.orderDate = new Date();
+        this.items = new Array();
+    }
+}
+class OrderItem {
+}
 
 
 /***/ }),
@@ -277,6 +321,9 @@ let ProductList = class ProductList {
             }
         });
     }
+    addProduct(product) {
+        this.data.AddToOrder(product);
+    }
 };
 ProductList.ctorParameters = () => [
     { type: _shared_dataService__WEBPACK_IMPORTED_MODULE_2__["DataService"] }
@@ -373,7 +420,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h3>Shopping Cart</h3>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>Shopping Cart</h3>\r\n<div>Count: {{ data.order.items.length }}</div>\r\n\r\n");
 
 /***/ }),
 
@@ -386,7 +433,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\r\n    <div class=\"card-deck wrap\">\r\n        <div class=\"card product-info\" *ngFor=\"let p of products; let i = index\">\r\n            <img class=\"card-img-top\" src=\"/img/{{ p.artId }}.jpg\" [alt]=\"p.title\">\r\n            <div class=\"card-body\">\r\n                <div class=\"product-name\">{{ p.category }} - {{ p.size }}</div>\r\n                <div><strong>Price:</strong> {{ p.price | currency:'USD':'symbol' }}</div>\r\n                <div><strong>Artist:</strong> {{ p.artist }}</div>\r\n                <div><strong>Title:</strong> {{ p.title }}</div>\r\n                <div><strong>Description:</strong><zippy title=\"Show\">{{ p.artDescription }}</zippy></div>\r\n                <button id=\"buyButton\" class=\"btn btn-success btn-sm pull-right\">Buy</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n   \r\n\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\r\n    <div class=\"card-deck wrap\">\r\n        <div class=\"card product-info\" *ngFor=\"let p of products; let i = index\">\r\n            <img class=\"card-img-top\" src=\"/img/{{ p.artId }}.jpg\" [alt]=\"p.title\">\r\n            <div class=\"card-body\">\r\n                <div class=\"product-name\">{{ p.category }} - {{ p.size }}</div>\r\n                <div><strong>Price:</strong> {{ p.price | currency:'USD':'symbol' }}</div>\r\n                <div><strong>Artist:</strong> {{ p.artist }}</div>\r\n                <div><strong>Title:</strong> {{ p.title }}</div>\r\n                <div><strong>Description:</strong><zippy title=\"Show\">{{ p.artDescription }}</zippy></div>\r\n                <button id=\"buyButton\" class=\"btn btn-success btn-sm pull-right\" (click)=\"addProduct(p)\">Buy</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n   \r\n\r\n\r\n");
 
 /***/ }),
 

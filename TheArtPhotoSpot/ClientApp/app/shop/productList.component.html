@@ -8,7 +8,7 @@
                 <div><strong>Artist:</strong> {{ p.artist }}</div>
                 <div><strong>Title:</strong> {{ p.title }}</div>
                 <div><strong>Description:</strong><zippy title="Show">{{ p.artDescription }}</zippy></div>
-                <button id="buyButton" class="btn btn-success btn-sm pull-right">Buy</button>
+                <button id="buyButton" class="btn btn-success btn-sm pull-right" (click)="addProduct(p)">Buy</button>
             </div>
         </div>
     </div>

@@ -12,6 +12,9 @@ let ProductList = class ProductList {
             }
         });
     }
+    addProduct(product) {
+        this.data.AddToOrder(product);
+    }
 };
 ProductList = tslib_1.__decorate([
     Component({

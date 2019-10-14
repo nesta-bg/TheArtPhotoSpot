@@ -6,6 +6,7 @@ import { ProductList } from './shop/productList.component';
 import { DataService } from './shared/dataService';
 import { HttpClientModule } from '@angular/common/http';
 import { ZippyComponent } from './shared/zippy.component';
+import { Cart } from './shop/cart.component';
 let AppModule = class AppModule {
 };
 AppModule = tslib_1.__decorate([
@@ -13,7 +14,8 @@ AppModule = tslib_1.__decorate([
         declarations: [
             AppComponent,
             ProductList,
-            ZippyComponent
+            ZippyComponent,
+            Cart
         ],
         imports: [
             BrowserModule,
