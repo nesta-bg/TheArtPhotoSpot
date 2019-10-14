@@ -28,18 +28,23 @@ export class DataService {
     public AddToOrder(product: Product) {
 
         //let item: orders.OrderItem;
-        let item: OrderItem;
+        let item: OrderItem = this.order.items.find(i => i.productId == product.id);
 
-        item = new OrderItem();
-        item.productId = product.id;
-        item.productArtist = product.artist;
-        item.productCategory = product.category;
-        item.productArtId = product.artId;
-        item.productTitle = product.title;
-        item.productSize = product.size;
-        item.unitPrice = product.price;
-        item.quantity = 1;
+        if (item) {
+            item.quantity++;
+        } else {
 
-        this.order.items.push(item);
+            item = new OrderItem();
+            item.productId = product.id;
+            item.productArtist = product.artist;
+            item.productCategory = product.category;
+            item.productArtId = product.artId;
+            item.productTitle = product.title;
+            item.productSize = product.size;
+            item.unitPrice = product.price;
+            item.quantity = 1;
+
+            this.order.items.push(item);
+        }
     }
 } 

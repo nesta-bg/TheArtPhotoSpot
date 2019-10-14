@@ -137,17 +137,22 @@ let DataService = class DataService {
     }
     AddToOrder(product) {
         //let item: orders.OrderItem;
-        let item;
-        item = new _order__WEBPACK_IMPORTED_MODULE_3__["OrderItem"]();
-        item.productId = product.id;
-        item.productArtist = product.artist;
-        item.productCategory = product.category;
-        item.productArtId = product.artId;
-        item.productTitle = product.title;
-        item.productSize = product.size;
-        item.unitPrice = product.price;
-        item.quantity = 1;
-        this.order.items.push(item);
+        let item = this.order.items.find(i => i.productId == product.id);
+        if (item) {
+            item.quantity++;
+        }
+        else {
+            item = new _order__WEBPACK_IMPORTED_MODULE_3__["OrderItem"]();
+            item.productId = product.id;
+            item.productArtist = product.artist;
+            item.productCategory = product.category;
+            item.productArtId = product.artId;
+            item.productTitle = product.title;
+            item.productSize = product.size;
+            item.unitPrice = product.price;
+            item.quantity = 1;
+            this.order.items.push(item);
+        }
     }
 };
 DataService.ctorParameters = () => [
@@ -420,7 +425,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h3>Shopping Cart</h3>\r\n<div>Count: {{ data.order.items.length }}</div>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>Shopping Cart</h3>\r\n<div>#Items: {{ data.order.items.length }}</div>\r\n<table class=\"table table-bordered table-hover table-dark table-sm\">\r\n    <thead>\r\n        <tr>\r\n            <td>Product</td>\r\n            <!--<td>Quantity</td>-->\r\n            <td>#</td>\r\n            <td>Price</td>\r\n            <td>Total</td>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let o of data.order.items\">\r\n            <td>{{ o.productCategory }} - {{ o.productTitle }} </td>\r\n            <td>{{ o.quantity }}</td>\r\n            <td>{{ o.unitPrice | currency:\"USD\":true }}</td>\r\n            <td>{{ (o.unitPrice * o.quantity ) | currency:\"USD\":true }}</td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n\r\n");
 
 /***/ }),
 
