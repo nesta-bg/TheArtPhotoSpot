@@ -67,12 +67,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./ClientApp/app/app.component.ts");
-/* harmony import */ var _shop_productList_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shop/productList.component */ "./ClientApp/app/shop/productList.component.ts");
-/* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shared/dataService */ "./ClientApp/app/shared/dataService.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _shared_zippy_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/zippy.component */ "./ClientApp/app/shared/zippy.component.ts");
-/* harmony import */ var _shop_cart_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./shop/cart.component */ "./ClientApp/app/shop/cart.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./ClientApp/app/app.component.ts");
+/* harmony import */ var _shop_productList_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shop/productList.component */ "./ClientApp/app/shop/productList.component.ts");
+/* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/dataService */ "./ClientApp/app/shared/dataService.ts");
+/* harmony import */ var _shared_zippy_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./shared/zippy.component */ "./ClientApp/app/shared/zippy.component.ts");
+/* harmony import */ var _shop_cart_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./shop/cart.component */ "./ClientApp/app/shop/cart.component.ts");
+/* harmony import */ var _shop_shop_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./shop/shop.component */ "./ClientApp/app/shop/shop.component.ts");
+/* harmony import */ var _checkout_checkout_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./checkout/checkout.component */ "./ClientApp/app/checkout/checkout.component.ts");
 
 
 
@@ -82,24 +85,90 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+const appRoutes = [
+    { path: "", component: _shop_shop_component__WEBPACK_IMPORTED_MODULE_10__["Shop"] },
+    { path: "checkout", component: _checkout_checkout_component__WEBPACK_IMPORTED_MODULE_11__["Checkout"] }
+];
 let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-            _shop_productList_component__WEBPACK_IMPORTED_MODULE_4__["ProductList"],
-            _shared_zippy_component__WEBPACK_IMPORTED_MODULE_7__["ZippyComponent"],
-            _shop_cart_component__WEBPACK_IMPORTED_MODULE_8__["Cart"]
+            _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
+            _shop_productList_component__WEBPACK_IMPORTED_MODULE_6__["ProductList"],
+            _shared_zippy_component__WEBPACK_IMPORTED_MODULE_8__["ZippyComponent"],
+            _shop_cart_component__WEBPACK_IMPORTED_MODULE_9__["Cart"],
+            _shop_shop_component__WEBPACK_IMPORTED_MODULE_10__["Shop"],
+            _checkout_checkout_component__WEBPACK_IMPORTED_MODULE_11__["Checkout"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"]
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(appRoutes, {
+                useHash: true,
+                enableTracing: false // for Debugging of the Routes
+            })
         ],
-        providers: [_shared_dataService__WEBPACK_IMPORTED_MODULE_5__["DataService"]],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
+        providers: [_shared_dataService__WEBPACK_IMPORTED_MODULE_7__["DataService"]],
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/checkout/checkout.component.css":
+/*!*******************************************************!*\
+  !*** ./ClientApp/app/checkout/checkout.component.css ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".checkout-thumb {\r\n    max-width: 100px;\r\n}\r\n\r\ntr.bg-dark {\r\n    color: white;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNsaWVudEFwcC9hcHAvY2hlY2tvdXQvY2hlY2tvdXQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLFlBQVk7QUFDaEIiLCJmaWxlIjoiQ2xpZW50QXBwL2FwcC9jaGVja291dC9jaGVja291dC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNoZWNrb3V0LXRodW1iIHtcclxuICAgIG1heC13aWR0aDogMTAwcHg7XHJcbn1cclxuXHJcbnRyLmJnLWRhcmsge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcbiJdfQ== */");
+
+/***/ }),
+
+/***/ "./ClientApp/app/checkout/checkout.component.ts":
+/*!******************************************************!*\
+  !*** ./ClientApp/app/checkout/checkout.component.ts ***!
+  \******************************************************/
+/*! exports provided: Checkout */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Checkout", function() { return Checkout; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/dataService */ "./ClientApp/app/shared/dataService.ts");
+
+
+
+let Checkout = class Checkout {
+    constructor(data) {
+        this.data = data;
+    }
+    onCheckout() {
+        // TODO
+        alert("Doing checkout");
+    }
+};
+Checkout.ctorParameters = () => [
+    { type: _shared_dataService__WEBPACK_IMPORTED_MODULE_2__["DataService"] }
+];
+Checkout = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: "checkout",
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./checkout.component.html */ "./node_modules/raw-loader/dist/cjs.js!./ClientApp/app/checkout/checkout.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./checkout.component.css */ "./ClientApp/app/checkout/checkout.component.css")).default]
+    })
+], Checkout);
 
 
 
@@ -352,6 +421,33 @@ ProductList = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./ClientApp/app/shop/shop.component.ts":
+/*!**********************************************!*\
+  !*** ./ClientApp/app/shop/shop.component.ts ***!
+  \**********************************************/
+/*! exports provided: Shop */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Shop", function() { return Shop; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let Shop = class Shop {
+};
+Shop = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: "the-shop",
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./shop.component.html */ "./node_modules/raw-loader/dist/cjs.js!./ClientApp/app/shop/shop.component.html")).default
+    })
+], Shop);
+
+
+
+/***/ }),
+
 /***/ "./ClientApp/environments/environment.ts":
 /*!***********************************************!*\
   !*** ./ClientApp/environments/environment.ts ***!
@@ -419,7 +515,20 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"fluid-container wrap\">\r\n    <div class=\"row\">\r\n        <div class=\"col-9\">\r\n            <h3>{{ title }}</h3>\r\n            <product-list></product-list>\r\n        </div>\r\n        <div class=\"col-3 bg-light\">\r\n            <the-cart></the-cart>\r\n        </div>\r\n    </div>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<router-outlet></router-outlet>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./ClientApp/app/checkout/checkout.component.html":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./ClientApp/app/checkout/checkout.component.html ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-center\">\r\n    <div class=\"col-8\">\r\n        <h3 class=\"text-center\">Confirm Order</h3>\r\n        <table class=\"table table-bordered table-hover\">\r\n            <tr *ngFor=\"let o of data.order.items\">\r\n                <td><img src=\"/img/{{ o.productArtId }}.jpg\" alt=\"o.productTitle\" class=\"img-thumbnail checkout-thumb\" /></td>\r\n                <td>{{ o.productCategory }}({{ o.productSize }}) - {{ o.productArtist }}: {{ o.productTitle }}</td>\r\n                <td>{{ o.quantity }}</td>\r\n                <td>{{ o.unitPrice|currency:'USD':'symbol' }}</td>\r\n                <td>{{ (o.unitPrice * o.quantity)|currency:'USD':'symbol' }}</td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"row justify-content-center\">\r\n    <div class=\"col-8 text-right\">\r\n        <table class=\"table table-bordered table-hover\">\r\n            <tr>\r\n                <td class=\"text-left\">Subtotal</td>\r\n                <td class=\"text-right\">{{ data.order.subtotal|currency:'USD':'symbol' }}</td>\r\n            </tr>\r\n            <tr>\r\n                <td class=\"text-left\">Shipping</td>\r\n                <td class=\"text-right\">$ 0.00</td>\r\n            </tr>\r\n            <tr class=\"bg-dark\">\r\n                <td class=\"text-left\">Total:</td>\r\n                <td class=\"text-right\">{{ data.order.subtotal|currency:'USD':'symbol' }}</td>\r\n            </tr>\r\n        </table>\r\n\r\n        <button class=\"btn btn-success mr-1\" (click)=\"onCheckout()\">Complete Purchase</button>\r\n        <a routerLink=\"/\" class=\"btn btn-info\">Cancel</a>\r\n    </div>\r\n</div> ");
 
 /***/ }),
 
@@ -432,7 +541,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h3>Shopping Cart</h3>\r\n<div>#Items: {{ data.order.items.length }}</div>\r\n<div>Subtotal: {{ data.order.subtotal | currency:\"USD\":'symbol' }}</div>\r\n<table class=\"table table-bordered table-hover table-dark table-sm\">\r\n    <thead>\r\n        <tr>\r\n            <td>Product</td>\r\n            <!--<td>Quantity</td>-->\r\n            <td>#</td>\r\n            <td>Price</td>\r\n            <td>Total</td>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let o of data.order.items\">\r\n            <td>{{ o.productCategory }} - {{ o.productTitle }} </td>\r\n            <td>{{ o.quantity }}</td>\r\n            <td>{{ o.unitPrice | currency:\"USD\":'symbol' }}</td>\r\n            <td>{{ (o.unitPrice * o.quantity ) | currency:\"USD\":'symbol' }}</td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>Shopping Cart</h3>\r\n<div>#Items: {{ data.order.items.length }}</div>\r\n<div>Subtotal: {{ data.order.subtotal | currency:\"USD\":'symbol' }}</div>\r\n<table class=\"table table-bordered table-hover table-dark table-sm\">\r\n    <thead>\r\n        <tr>\r\n            <td>Product</td>\r\n            <!--<td>Quantity</td>-->\r\n            <td>#</td>\r\n            <td>Price</td>\r\n            <td>Total</td>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let o of data.order.items\">\r\n            <td>{{ o.productCategory }} - {{ o.productTitle }} </td>\r\n            <td>{{ o.quantity }}</td>\r\n            <td>{{ o.unitPrice | currency:\"USD\":'symbol' }}</td>\r\n            <td>{{ (o.unitPrice * o.quantity ) | currency:\"USD\":'symbol' }}</td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n<a routerLink=\"checkout\" class=\"btn btn-success\" *ngIf=\"data.order.items.length > 0\">Checkout</a>\r\n\r\n");
 
 /***/ }),
 
@@ -446,6 +555,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\r\n    <div class=\"card-deck wrap\">\r\n        <div class=\"card product-info\" *ngFor=\"let p of products; let i = index\">\r\n            <img class=\"card-img-top\" src=\"/img/{{ p.artId }}.jpg\" [alt]=\"p.title\">\r\n            <div class=\"card-body\">\r\n                <div class=\"product-name\">{{ p.category }} - {{ p.size }}</div>\r\n                <div><strong>Price:</strong> {{ p.price | currency:'USD':'symbol' }}</div>\r\n                <div><strong>Artist:</strong> {{ p.artist }}</div>\r\n                <div><strong>Title:</strong> {{ p.title }}</div>\r\n                <div><strong>Description:</strong><zippy title=\"Show\">{{ p.artDescription }}</zippy></div>\r\n                <button id=\"buyButton\" class=\"btn btn-success btn-sm pull-right\" (click)=\"addProduct(p)\">Buy</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n   \r\n\r\n\r\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./ClientApp/app/shop/shop.component.html":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./ClientApp/app/shop/shop.component.html ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\r\n    <div class=\"col-9\">\r\n        <h3>{{ title }}</h3>\r\n        <product-list></product-list>\r\n    </div>\r\n    <div class=\"col-3 bg-light\">\r\n        <the-cart></the-cart>\r\n    </div>\r\n</div>");
 
 /***/ }),
 
