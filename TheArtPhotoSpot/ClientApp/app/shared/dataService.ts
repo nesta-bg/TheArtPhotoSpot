@@ -2,14 +2,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Product } from './product';
 import { Order, OrderItem } from './order';
-
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class DataService {
 
-    apiUrl = 'http://localhost:63127/api';
+    apiUrl = 'http://localhost:63127';
 
     constructor(private httpClient: HttpClient) {
 
@@ -26,8 +26,17 @@ export class DataService {
         return this.token.length == 0 || this.tokenExpiration > new Date();
     }
 
+    public login(creds) {
+        return this.httpClient.post(`${this.apiUrl}/account/createtoken`, creds)
+            .pipe(map((response: any) => {
+                this.token = response.token;
+                this.tokenExpiration = response.expiration;
+                return true;
+            }));
+    }
+
     loadProducts() {
-        return this.httpClient.get<Product[]>(`${this.apiUrl}/products`);
+        return this.httpClient.get<Product[]>(`${this.apiUrl}/api/products`);
     }
 
     public AddToOrder(product: Product) {

@@ -203,12 +203,24 @@ let Login = class Login {
     constructor(dataService, router) {
         this.dataService = dataService;
         this.router = router;
+        this.errorMessage = "";
         this.creds = {
             username: "",
             password: ""
         };
     }
     onLogin() {
+        this.dataService.login(this.creds)
+            .subscribe(success => {
+            if (success) {
+                if (this.dataService.order.items.length == 0) {
+                    this.router.navigate([""]);
+                }
+                else {
+                    this.router.navigate(["checkout"]);
+                }
+            }
+        }, err => this.errorMessage = "Failed to login");
     }
 };
 Login.ctorParameters = () => [
@@ -240,6 +252,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _order__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./order */ "./ClientApp/app/shared/order.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
 
 
 
@@ -247,7 +261,7 @@ __webpack_require__.r(__webpack_exports__);
 let DataService = class DataService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        this.apiUrl = 'http://localhost:63127/api';
+        this.apiUrl = 'http://localhost:63127';
         this.token = "";
         this.order = new _order__WEBPACK_IMPORTED_MODULE_3__["Order"]();
         this.products = [];
@@ -255,8 +269,16 @@ let DataService = class DataService {
     get loginRequired() {
         return this.token.length == 0 || this.tokenExpiration > new Date();
     }
+    login(creds) {
+        return this.httpClient.post(`${this.apiUrl}/account/createtoken`, creds)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((response) => {
+            this.token = response.token;
+            this.tokenExpiration = response.expiration;
+            return true;
+        }));
+    }
     loadProducts() {
-        return this.httpClient.get(`${this.apiUrl}/products`);
+        return this.httpClient.get(`${this.apiUrl}/api/products`);
     }
     AddToOrder(product) {
         let item = this.order.items.find(i => i.productId == product.id);
@@ -608,7 +630,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-center\">\r\n    <div class=\"col-4\">\r\n        <h4 class=\"text-center\">Login</h4>\r\n        <form (submit)=\"onLogin()\" #theForm=\"ngForm\" novalidate>\r\n            <div class=\"form-group\">\r\n                <label for=\"username\">Username</label>\r\n                <input type=\"text\" class=\"form-control\" name=\"username\" [(ngModel)]=\"creds.username\" #username=\"ngModel\" required />\r\n                <div class=\"text-danger\" *ngIf=\"username.touched && username.invalid && username.errors.required\">Username is required!</div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"password\">Password</label>\r\n                <input type=\"password\" class=\"form-control\" name=\"password\" [(ngModel)]=\"creds.password\" #password=\"ngModel\" required />\r\n                <div class=\"text-danger\" *ngIf=\"password.touched && password.invalid && password.errors.required\">Password is required!</div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"submit\" class=\"btn btn-success mr-1\" value=\"Login\" [disabled]=\"theForm.invalid\" />\r\n                <a routerLink=\"/\" class=\"btn btn-light\">Cancel</a>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div> ");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-center\">\r\n    <div class=\"col-4\">\r\n        <h4 class=\"text-center\">Login</h4>\r\n        <div *ngIf=\"errorMessage\" class=\"alert alert-warning\">{{ errorMessage }}</div>\r\n        <form (submit)=\"onLogin()\" #theForm=\"ngForm\" novalidate>\r\n            <div class=\"form-group\">\r\n                <label for=\"username\">Username</label>\r\n                <input type=\"text\" class=\"form-control\" name=\"username\" [(ngModel)]=\"creds.username\" #username=\"ngModel\" required />\r\n                <div class=\"text-danger\" *ngIf=\"username.touched && username.invalid && username.errors.required\">Username is required!</div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"password\">Password</label>\r\n                <input type=\"password\" class=\"form-control\" name=\"password\" [(ngModel)]=\"creds.password\" #password=\"ngModel\" required />\r\n                <div class=\"text-danger\" *ngIf=\"password.touched && password.invalid && password.errors.required\">Password is required!</div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"submit\" class=\"btn btn-success mr-1\" value=\"Login\" [disabled]=\"theForm.invalid\" />\r\n                <a routerLink=\"/\" class=\"btn btn-light\">Cancel</a>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div> ");
 
 /***/ }),
 
