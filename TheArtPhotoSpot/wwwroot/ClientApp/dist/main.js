@@ -209,9 +209,6 @@ let Login = class Login {
         };
     }
     onLogin() {
-        // Call the login Service
-        alert(this.creds.username);
-        this.creds.username += "!";
     }
 };
 Login.ctorParameters = () => [
@@ -611,7 +608,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-center\">\r\n    <div class=\"col-4\">\r\n        <h4 class=\"text-center\">Login</h4>\r\n        <form (submit)=\"onLogin()\">\r\n            <div class=\"form-group\">\r\n                <label for=\"username\">Username</label>\r\n                <input type=\"text\" class=\"form-control\" name=\"username\" [(ngModel)]=\"creds.username\" />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"password\">Password</label>\r\n                <input type=\"password\" class=\"form-control\" name=\"password\" [(ngModel)]=\"creds.password\" />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"submit\" class=\"btn btn-success mr-1\" value=\"Login\" />\r\n                <a routerLink=\"/\" class=\"btn btn-light\">Cancel</a>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div> ");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-center\">\r\n    <div class=\"col-4\">\r\n        <h4 class=\"text-center\">Login</h4>\r\n        <form (submit)=\"onLogin()\" #theForm=\"ngForm\" novalidate>\r\n            <div class=\"form-group\">\r\n                <label for=\"username\">Username</label>\r\n                <input type=\"text\" class=\"form-control\" name=\"username\" [(ngModel)]=\"creds.username\" #username=\"ngModel\" required />\r\n                <div class=\"text-danger\" *ngIf=\"username.touched && username.invalid && username.errors.required\">Username is required!</div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"password\">Password</label>\r\n                <input type=\"password\" class=\"form-control\" name=\"password\" [(ngModel)]=\"creds.password\" #password=\"ngModel\" required />\r\n                <div class=\"text-danger\" *ngIf=\"password.touched && password.invalid && password.errors.required\">Password is required!</div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"submit\" class=\"btn btn-success mr-1\" value=\"Login\" [disabled]=\"theForm.invalid\" />\r\n                <a routerLink=\"/\" class=\"btn btn-light\">Cancel</a>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div> ");
 
 /***/ }),
 
