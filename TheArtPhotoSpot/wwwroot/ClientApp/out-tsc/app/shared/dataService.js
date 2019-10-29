@@ -1,20 +1,21 @@
 import * as tslib_1 from "tslib";
 import { Injectable } from '@angular/core';
-//import * as orders from './order';
 import { Order, OrderItem } from './order';
 let DataService = class DataService {
     constructor(httpClient) {
         this.httpClient = httpClient;
         this.apiUrl = 'http://localhost:63127/api';
-        //public order: orders.Order = new orders.Order();
+        this.token = "";
         this.order = new Order();
         this.products = [];
+    }
+    get loginRequired() {
+        return this.token.length == 0 || this.tokenExpiration > new Date();
     }
     loadProducts() {
         return this.httpClient.get(`${this.apiUrl}/products`);
     }
     AddToOrder(product) {
-        //let item: orders.OrderItem;
         let item = this.order.items.find(i => i.productId == product.id);
         if (item) {
             item.quantity++;

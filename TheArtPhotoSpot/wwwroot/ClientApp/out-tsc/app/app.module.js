@@ -10,9 +10,11 @@ import { ZippyComponent } from './shared/zippy.component';
 import { Cart } from './shop/cart.component';
 import { Shop } from './shop/shop.component';
 import { Checkout } from './checkout/checkout.component';
+import { Login } from './login/login.component';
 const appRoutes = [
     { path: "", component: Shop },
-    { path: "checkout", component: Checkout }
+    { path: "checkout", component: Checkout },
+    { path: "login", component: Login },
 ];
 let AppModule = class AppModule {
 };
@@ -24,13 +26,14 @@ AppModule = tslib_1.__decorate([
             ZippyComponent,
             Cart,
             Shop,
-            Checkout
+            Checkout,
+            Login
         ],
         imports: [
             BrowserModule,
             HttpClientModule,
             RouterModule.forRoot(appRoutes, {
-                //useHash: true,
+                useHash: true,
                 enableTracing: false // for Debugging of the Routes
             })
         ],

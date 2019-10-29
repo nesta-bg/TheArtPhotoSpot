@@ -1,7 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Product } from './product';
-//import * as orders from './order';
 import { Order, OrderItem } from './order';
 
 
@@ -16,10 +15,16 @@ export class DataService {
 
     }
 
-    //public order: orders.Order = new orders.Order();
+    private token: string = "";
+    private tokenExpiration: Date;
+
     public order: Order = new Order();
 
     public products: Product[] = [];
+
+    public get loginRequired(): boolean {
+        return this.token.length == 0 || this.tokenExpiration > new Date();
+    }
 
     loadProducts() {
         return this.httpClient.get<Product[]>(`${this.apiUrl}/products`);
@@ -27,7 +32,6 @@ export class DataService {
 
     public AddToOrder(product: Product) {
 
-        //let item: orders.OrderItem;
         let item: OrderItem = this.order.items.find(i => i.productId == product.id);
 
         if (item) {
