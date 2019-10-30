@@ -87,14 +87,26 @@ namespace TheArtPhotoSpot.Data
                .FirstOrDefault();
         }
 
+        public void AddEntity(object model)
+        {
+            _context.Add(model);
+        }
+
         public bool SaveAll()
         {
             return _context.SaveChanges() > 0;
         }
 
-        public void AddEntity(object model)
+
+        public void AddOrder(Order newOrder)
         {
-            _context.Add(model);
+            // Convert new products to lookup of product
+            foreach (var item in newOrder.Items)
+            {
+                item.Product = _context.Products.Find(item.Product.Id);
+            }
+
+            AddEntity(newOrder);
         }
     }
 }

@@ -1,12 +1,18 @@
 import * as tslib_1 from "tslib";
 import { Component } from "@angular/core";
 let Checkout = class Checkout {
-    constructor(data) {
-        this.data = data;
+    constructor(dataService, router) {
+        this.dataService = dataService;
+        this.router = router;
+        this.errorMessage = "";
     }
     onCheckout() {
-        // TODO
-        alert("Doing checkout");
+        this.dataService.checkout()
+            .subscribe(success => {
+            if (success) {
+                this.router.navigate(["/"]);
+            }
+        }, err => this.errorMessage = "Failed to save order");
     }
 };
 Checkout = tslib_1.__decorate([

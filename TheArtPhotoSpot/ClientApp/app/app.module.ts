@@ -16,7 +16,7 @@ import { Login } from './login/login.component';
 const appRoutes: Routes = [
     { path: "", component: Shop },
     { path: "checkout", component: Checkout },
-    { path: "login", component: Login },
+    { path: "login", component: Login }
 ];
 
 @NgModule({

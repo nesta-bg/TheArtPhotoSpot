@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Product } from './product';
 import { Order, OrderItem } from './order';
 import { map } from 'rxjs/operators';
@@ -37,6 +37,19 @@ export class DataService {
 
     loadProducts() {
         return this.httpClient.get<Product[]>(`${this.apiUrl}/api/products`);
+    }
+
+    public checkout() {
+        if (!this.order.orderNumber) {
+            this.order.orderNumber = this.order.orderDate.getFullYear().toString() + this.order.orderDate.getTime();
+        }
+        return this.httpClient.post(`${this.apiUrl}/api/orders`, this.order, {
+            headers: new HttpHeaders({ "Authorization": "Bearer " + this.token })
+        })
+            .pipe(map(response => {
+                this.order = new Order();
+                return true;
+            }));
     }
 
     public AddToOrder(product: Product) {

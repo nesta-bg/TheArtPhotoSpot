@@ -95,7 +95,7 @@ __webpack_require__.r(__webpack_exports__);
 const appRoutes = [
     { path: "", component: _shop_shop_component__WEBPACK_IMPORTED_MODULE_11__["Shop"] },
     { path: "checkout", component: _checkout_checkout_component__WEBPACK_IMPORTED_MODULE_12__["Checkout"] },
-    { path: "login", component: _login_login_component__WEBPACK_IMPORTED_MODULE_13__["Login"] },
+    { path: "login", component: _login_login_component__WEBPACK_IMPORTED_MODULE_13__["Login"] }
 ];
 let AppModule = class AppModule {
 };
@@ -154,20 +154,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/dataService */ "./ClientApp/app/shared/dataService.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
 let Checkout = class Checkout {
-    constructor(data) {
+    constructor(data, router) {
         this.data = data;
+        this.router = router;
+        this.errorMessage = "";
     }
     onCheckout() {
-        // TODO
-        alert("Doing checkout");
+        this.data.checkout()
+            .subscribe(success => {
+            if (success) {
+                this.router.navigate(["/"]);
+            }
+        }, err => this.errorMessage = "Failed to save order");
     }
 };
 Checkout.ctorParameters = () => [
-    { type: _shared_dataService__WEBPACK_IMPORTED_MODULE_2__["DataService"] }
+    { type: _shared_dataService__WEBPACK_IMPORTED_MODULE_2__["DataService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
 ];
 Checkout = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -279,6 +288,18 @@ let DataService = class DataService {
     }
     loadProducts() {
         return this.httpClient.get(`${this.apiUrl}/api/products`);
+    }
+    checkout() {
+        if (!this.order.orderNumber) {
+            this.order.orderNumber = this.order.orderDate.getFullYear().toString() + this.order.orderDate.getTime();
+        }
+        return this.httpClient.post(`${this.apiUrl}/api/orders`, this.order, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ "Authorization": "Bearer " + this.token })
+        })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(response => {
+            this.order = new _order__WEBPACK_IMPORTED_MODULE_3__["Order"]();
+            return true;
+        }));
     }
     AddToOrder(product) {
         let item = this.order.items.find(i => i.productId == product.id);
@@ -617,7 +638,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-center\">\r\n    <div class=\"col-8\">\r\n        <h3 class=\"text-center\">Confirm Order</h3>\r\n        <table class=\"table table-bordered table-hover\">\r\n            <tr *ngFor=\"let o of data.order.items\">\r\n                <td><img src=\"/img/{{ o.productArtId }}.jpg\" alt=\"o.productTitle\" class=\"img-thumbnail checkout-thumb\" /></td>\r\n                <td>{{ o.productCategory }}({{ o.productSize }}) - {{ o.productArtist }}: {{ o.productTitle }}</td>\r\n                <td>{{ o.quantity }}</td>\r\n                <td>{{ o.unitPrice|currency:'USD':'symbol' }}</td>\r\n                <td>{{ (o.unitPrice * o.quantity)|currency:'USD':'symbol' }}</td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"row justify-content-center\">\r\n    <div class=\"col-8 text-right\">\r\n        <table class=\"table table-bordered table-hover\">\r\n            <tr>\r\n                <td class=\"text-left\">Subtotal</td>\r\n                <td class=\"text-right\">{{ data.order.subtotal|currency:'USD':'symbol' }}</td>\r\n            </tr>\r\n            <tr>\r\n                <td class=\"text-left\">Shipping</td>\r\n                <td class=\"text-right\">$ 0.00</td>\r\n            </tr>\r\n            <tr class=\"bg-dark\">\r\n                <td class=\"text-left\">Total:</td>\r\n                <td class=\"text-right\">{{ data.order.subtotal|currency:'USD':'symbol' }}</td>\r\n            </tr>\r\n        </table>\r\n\r\n        <button class=\"btn btn-success mr-1\" (click)=\"onCheckout()\">Complete Purchase</button>\r\n        <a routerLink=\"/\" class=\"btn btn-info\">Cancel</a>\r\n    </div>\r\n</div> ");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-center\">\r\n    <div class=\"col-8\">\r\n        <div *ngIf=\"errorMessage\" class=\"alert alert-warning\">{{ errorMessage }}</div>\r\n        <h3 class=\"text-center\">Confirm Order</h3>\r\n        <table class=\"table table-bordered table-hover\">\r\n            <tr *ngFor=\"let o of data.order.items\">\r\n                <td><img src=\"/img/{{ o.productArtId }}.jpg\" alt=\"o.productTitle\" class=\"img-thumbnail checkout-thumb\" /></td>\r\n                <td>{{ o.productCategory }}({{ o.productSize }}) - {{ o.productArtist }}: {{ o.productTitle }}</td>\r\n                <td>{{ o.quantity }}</td>\r\n                <td>{{ o.unitPrice|currency:'USD':'symbol' }}</td>\r\n                <td>{{ (o.unitPrice * o.quantity)|currency:'USD':'symbol' }}</td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"row justify-content-center\">\r\n    <div class=\"col-8 text-right\">\r\n        <table class=\"table table-bordered table-hover\">\r\n            <tr>\r\n                <td class=\"text-left\">Subtotal</td>\r\n                <td class=\"text-right\">{{ data.order.subtotal|currency:'USD':'symbol' }}</td>\r\n            </tr>\r\n            <tr>\r\n                <td class=\"text-left\">Shipping</td>\r\n                <td class=\"text-right\">$ 0.00</td>\r\n            </tr>\r\n            <tr class=\"bg-dark\">\r\n                <td class=\"text-left\">Total:</td>\r\n                <td class=\"text-right\">{{ data.order.subtotal|currency:'USD':'symbol' }}</td>\r\n            </tr>\r\n        </table>\r\n\r\n        <button class=\"btn btn-success mr-1\" (click)=\"onCheckout()\">Complete Purchase</button>\r\n        <a routerLink=\"/\" class=\"btn btn-info\">Cancel</a>\r\n    </div>\r\n</div> ");
 
 /***/ }),
 

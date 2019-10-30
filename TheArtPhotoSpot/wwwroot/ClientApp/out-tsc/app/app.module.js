@@ -12,7 +12,7 @@ import { Cart } from './shop/cart.component';
 import { Shop } from './shop/shop.component';
 import { Checkout } from './checkout/checkout.component';
 import { Login } from './login/login.component';
-const appRoutes = [
+let appRoutes = [
     { path: "", component: Shop },
     { path: "checkout", component: Checkout },
     { path: "login", component: Login },
