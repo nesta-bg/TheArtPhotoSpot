@@ -273,7 +273,6 @@ let DataService = class DataService {
         this.apiUrl = 'http://localhost:63127';
         this.token = "";
         this.order = new _order__WEBPACK_IMPORTED_MODULE_3__["Order"]();
-        this.products = [];
     }
     get loginRequired() {
         return this.token.length == 0 || this.tokenExpiration > new Date();

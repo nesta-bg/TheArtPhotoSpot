@@ -9,7 +9,6 @@ let DataService = class DataService {
         this.apiUrl = 'http://localhost:63127';
         this.token = "";
         this.order = new Order();
-        this.products = [];
     }
     get loginRequired() {
         return this.token.length == 0 || this.tokenExpiration > new Date();

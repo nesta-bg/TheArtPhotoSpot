@@ -12,10 +12,10 @@ import { Cart } from './shop/cart.component';
 import { Shop } from './shop/shop.component';
 import { Checkout } from './checkout/checkout.component';
 import { Login } from './login/login.component';
-let appRoutes = [
+const appRoutes = [
     { path: "", component: Shop },
     { path: "checkout", component: Checkout },
-    { path: "login", component: Login },
+    { path: "login", component: Login }
 ];
 let AppModule = class AppModule {
 };

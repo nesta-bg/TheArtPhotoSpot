@@ -1,13 +1,13 @@
 import * as tslib_1 from "tslib";
 import { Component } from "@angular/core";
 let Checkout = class Checkout {
-    constructor(dataService, router) {
-        this.dataService = dataService;
+    constructor(data, router) {
+        this.data = data;
         this.router = router;
         this.errorMessage = "";
     }
     onCheckout() {
-        this.dataService.checkout()
+        this.data.checkout()
             .subscribe(success => {
             if (success) {
                 this.router.navigate(["/"]);
